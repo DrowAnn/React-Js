@@ -1,11 +1,22 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
-import Button from "./components/Button";
 
 function App() {
-  return <></>;
+  const [mostrar, setMostrar] = useState(false);
+
+  return (
+    <>
+      <h1>Test Mostrar</h1>
+      <button
+        onClick={() => {
+          setMostrar(!mostrar);
+        }}
+      >
+        Click para {mostrar ? "Ocultar" : "Mostrar"}
+      </button>
+      {mostrar && <p>Existo</p>}
+    </>
+  );
 }
 
 export default App;
