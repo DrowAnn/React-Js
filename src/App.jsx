@@ -8,7 +8,11 @@ function App() {
   const saludo = "Hola";
   const nombre = "Robert";
 
-  return <></>;
+  return (
+    <>
+      <p>___Prueba___</p>
+    </>
+  );
 }
 
 export default App;
