@@ -1,16 +1,18 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
-import Button from "./components/Button";
+import Encabezado from "./components/Encabezado";
+import Contenido from "./components/Contenido";
+import Footer from "./components/Footer";
+import Boton from "./components/Boton/index";
 
 function App() {
-  const saludo = "Hola";
-  const nombre = "Robert";
-
   return (
     <>
-      <p>___Prueba___</p>
+      <Encabezado titulo="Encabezado 1" />
+      <Contenido>
+        Hola Brother
+        <Boton>Clickeame</Boton>
+      </Contenido>
+      <Footer titulo="Footer 1" />
     </>
   );
 }
