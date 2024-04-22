@@ -19,6 +19,7 @@ function App() {
       >
         Clickeame!
       </Button>
+      <Button>Segundo Botón</Button>
     </>
   );
 }

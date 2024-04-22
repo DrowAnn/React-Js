@@ -1,9 +1,8 @@
+import "./Button.css";
+
 const Button = (props) => {
   return (
-    <button
-      style={{ backgroundColor: "red", borderRadius: "40 px" }}
-      {...props}
-    >
+    <button className="button-try" {...props}>
       {props.children}
     </button>
   );
