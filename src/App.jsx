@@ -1,4 +1,5 @@
 import "./App.css";
+import Boton from "./components/Boton/index";
 import { useEffect, useState } from "react";
 
 function App() {
