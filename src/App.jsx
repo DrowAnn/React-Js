@@ -1,99 +1,63 @@
+import { useContext, useState } from "react";
+import React from "react";
 import "./App.css";
-import Boton from "./components/Boton/index";
-import { useEffect, useState } from "react";
+
+const userContext = React.createContext();
+
+const Contador = () => {
+  const [contador, setContador] = useState(0);
+
+  return (
+    <div>
+      <h1>Cantidad de Clicks</h1>
+      <button
+        onClick={() => {
+          setContador(contador + 1);
+        }}
+      >
+        {contador}
+      </button>
+    </div>
+  );
+};
+
+const Encabezado = () => {
+  const User = useContext(userContext);
+
+  return (
+    <div>
+      <h1>Bienvenido</h1>
+      <div>
+        <img src={User.foto} style={{ width: "100px" }} />
+      </div>
+    </div>
+  );
+};
+
+const Perfil = () => {
+  const User = useContext(userContext);
+
+  return (
+    <div>
+      <h2>Nombre: {User.nombre}</h2>
+      <h2>Apellido: {User.apellido}</h2>
+    </div>
+  );
+};
 
 function App() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [cargaBoton, setCargaBoton] = useState(false);
-  const [listaProductos, setListaDeProductos] = useState([]);
-  const [tituloLista, setTituloLista] = useState(false);
-  const [bienvenida, setBienvenida] = useState(true);
-
-  // useEffect(() => {
-  //   console.log("Montaje");
-
-  // fetch("https://fakestoreapi.com/products")
-  //   .then((res) => res.json())
-  //   .then((json) => {
-  //     setTimeout(() => {
-  //       setListaDeProductos(json);
-  //       setIsLoading(false);
-  //     }, 2000);
-  //   });
-
-  //   return () => {
-  //     console.log("Desmontaje");
-  //   };
-  // }, []);
-
-  // useEffect(() => {
-  //   if (listaProductos.length) {
-  //     alert("La lista ha sido cargada con exito!");
-  //   }
-  // }, [listaProductos]);
-
-  // if (isLoading) {
-  //   return <p>Loading...</p>;
-  // }
-
-  useEffect(() => {
-    setTimeout(() => {
-      setBienvenida(false);
-      setIsLoading(true);
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 1500);
-    }, 2500);
-  }, []);
-
-  if (bienvenida) {
-    return <h1>Bienvenido</h1>;
-  }
-
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
+  const User = {
+    nombre: "Robert",
+    apellido: "Delgado",
+    foto: "https://static.vecteezy.com/system/resources/previews/002/275/847/non_2x/male-avatar-profile-icon-of-smiling-caucasian-man-vector.jpg",
+  };
 
   return (
     <>
-      <h1>Manejo de Lista</h1>
-      <Boton
-        color="Blue"
-        onClick={() => {
-          setCargaBoton(true);
-          fetch("https://fakestoreapi.com/products")
-            .then((res) => res.json())
-            .then((json) => {
-              setTimeout(() => {
-                setListaDeProductos(json);
-                setCargaBoton(false);
-                setTituloLista(true);
-              }, 1500);
-            });
-        }}
-        cargando={cargaBoton}
-      >
-        Imprimir Lista
-      </Boton>
-      <Boton
-        color="Red"
-        onClick={() => {
-          setListaDeProductos([]);
-          setTituloLista(false);
-          // alert("Se eliminara la visra de los productos");
-        }}
-      >
-        Borrar Lista
-      </Boton>
-      <h1>{tituloLista ? "Lista de Productos" : ""}</h1>
-      {listaProductos.map((product, index) => {
-        return (
-          <div key={index.toString()}>
-            <h2>{`${(index + 1).toString()}. ${product.title}`}</h2>
-            <p>{product.description}</p>
-          </div>
-        );
-      })}
+      <userContext.Provider value={User}>
+        <Encabezado />
+        <Perfil />
+      </userContext.Provider>
     </>
   );
 }
