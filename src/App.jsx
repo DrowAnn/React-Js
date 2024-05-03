@@ -1,14 +1,10 @@
 import "./App.css";
-import { Provider } from "react-redux";
-import Store from "./components/Store/index.js";
-import ToDosView from "/src/components/Views/ToDosView.jsx";
+import IndexView from "./components/Views/indexView.jsx";
 
 function App() {
   return (
     <>
-      <Provider store={Store}>
-        <ToDosView />
-      </Provider>
+      <IndexView />
     </>
   );
 }
