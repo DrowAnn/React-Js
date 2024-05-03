@@ -1,10 +1,10 @@
 import "./App.css";
-import IndexView from "./components/Views/indexView.jsx";
+import AppRouting from "./components/Routing/Routing";
 
 function App() {
   return (
     <>
-      <IndexView />
+      <AppRouting />
     </>
   );
 }
