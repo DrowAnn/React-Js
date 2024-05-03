@@ -6,7 +6,7 @@ import ToDosView from "/src/components/Views/ToDosView.jsx";
 function App() {
   return (
     <>
-      <Provider Store={Store}>
+      <Provider store={Store}>
         <ToDosView />
       </Provider>
     </>

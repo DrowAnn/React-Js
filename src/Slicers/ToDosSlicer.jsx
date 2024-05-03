@@ -9,11 +9,20 @@ const toDosSlice = createSlice({
   initialState,
   name: "ToDos",
   reducers: {
-    agregarToDo: (state, { paylod }) => {
-      const newToDo = paylod;
+    agregarToDo: (state, { payload }) => {
+      const newToDo = payload;
       state.toDosList = [...state.toDosList, newToDo];
     },
-    borrarToDo: (state, { paylod }) => {},
+    borrarUltimoToDo: (state) => {
+      const arrayState = [...state.toDosList];
+      arrayState.pop();
+      state.toDosList = arrayState;
+    },
+    borrarToDoEspecifico: (state, { payload }) => {
+      const arrayState = [...state.toDosList];
+      arrayState.splice(payload - 1, 1);
+      state.toDosList = arrayState;
+    },
   },
 });
 
