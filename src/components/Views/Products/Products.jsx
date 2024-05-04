@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Product from "../Product/Product";
+import "./Products.css";
 
 export const ListContext = React.createContext();
 
@@ -17,9 +17,11 @@ const Products = () => {
 
   return (
     <div>
-      <Link to="/">Home</Link>
+      <Link style={{ fontSize: "larger" }} to="/">
+        Home
+      </Link>
       <h1>Lista de Productos</h1>
-      <ol>
+      <ol className="Lista">
         {list.map((product) => {
           return (
             <li key={product.id}>
