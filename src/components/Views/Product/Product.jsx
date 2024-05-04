@@ -3,29 +3,21 @@ import { Link, useParams } from "react-router-dom";
 
 const Product = () => {
   const [detalles, setDetalles] = useState("");
+  const [Loading, setLoading] = useState(true);
   const { id } = useParams();
-  let rating = "";
 
   useEffect(() => {
     fetch(`https://fakestoreapi.com/products/${id}`)
       .then((res) => res.json())
       .then((json) => {
         setDetalles(json);
+        setLoading(false);
       });
   }, [id]);
 
-  const Calificacion = (props) => {
-    if (props) {
-      return (
-        <>
-          <h3>Calificacion: {props.data.rate}</h3>
-          <p>Cantidad de Votos: {props.data.count}</p>
-        </>
-      );
-    } else {
-      return <div></div>;
-    }
-  };
+  if (Loading) {
+    return <h1>Is Loading...</h1>;
+  }
 
   return (
     <div>
@@ -37,7 +29,10 @@ const Product = () => {
       <p>{detalles.description}</p>
       <p>Precio: ${detalles.price}</p>
       <p>Categotia: {detalles.category}</p>
-      <Calificacion data={detalles.rating} />
+      <h3>Calificacion: {detalles.rating.rate}</h3>
+      <p>Cantidad de Votos: {detalles.rating.count}</p>
+      {/* <h3>Calificacion: {((detalles || {}).rating || {}).rate}</h3>
+      <p>Cantidad de Votos: {((detalles || {}).rating || {}).count}</p> */}
     </div>
   );
 };
