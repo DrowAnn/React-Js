@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { toDosReducer } from "/src/Slicers/ToDosSlicer.jsx";
+import { carritoReducer } from "../../Slicers/CarritoSlicer";
 
 const Store = configureStore({
   reducer: {
-    ToDos: toDosReducer,
+    Carrito: carritoReducer,
   },
 });
 

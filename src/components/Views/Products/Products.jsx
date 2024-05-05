@@ -17,8 +17,11 @@ const Products = () => {
 
   return (
     <div>
-      <Link style={{ fontSize: "larger" }} to="/">
+      <Link style={{ fontSize: "larger", margin: "15px" }} to="/">
         Home
+      </Link>
+      <Link style={{ fontSize: "larger" }} to={"/carritocompras"}>
+        Ver Carrito
       </Link>
       <h1>Lista de Productos</h1>
       <ol className="Lista">

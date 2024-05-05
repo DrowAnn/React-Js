@@ -4,7 +4,9 @@ const Home = () => {
   return (
     <div>
       <h1>Bienvenido al Home</h1>
-      <Link to="products">Ver lista de Productos</Link>
+      <Link style={{ fontSize: "larger" }} to="products">
+        Ver lista de Productos
+      </Link>
     </div>
   );
 };
